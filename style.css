@@ -1,0 +1,186 @@
+body
+{
+    background-color: #303030;
+    color: white;
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+    margin: 0 !important;
+}                 /* margin: 0 !important;  - taki mały bajer, żeby nie pozwolić przeglądarce na ustalanie włąsnych (małych) marginesów*, może tego nie być, ale jest łądniej/
+                  /*!important - unieważnia ustawienia domyślne - łamie kaskadowość*/
+
+.wrapper
+{
+    width: 100%;                /*na całą stronę*/
+}
+
+.header
+{
+    width: 100%;
+    padding: 40px 0;              /*padding w pionie i w poziomie*/
+}
+.logo
+{
+    width: 450px;
+    font-size: 48px;
+    margin-left: auto;           /*przeglądarka ma sama wyśrodkować*/
+    margin-right: auto;
+}
+.nav
+{
+    width: 100%;                     /*menu na całą stronę*/
+    padding: 10px 0;                 /*padding w pionie i w poziomie*/
+    background-color: #c34f4f ;
+    text-align: center;              /*żeby menu było zawsze wyśrodkowane*/
+    border-top: 1px solid #751b1b;   /*dla picu - tego prawie nie widać*/
+    border-bottom: 1px solid #751b1b;
+}
+.content
+{
+    width: 1000px;                  /*to już nie na całą stronę*/
+    margin-left: auto;              /*zawsze na środku*/
+    margin-right: auto;
+    text-align: justify;            /*tekst wyjustowany*/
+    padding-top: 10px;
+}
+.socials
+{
+    width: 100%;
+    text-align: center;             /*żeby zawartość dziedziczących divów byłą też wyśrodkowana*/
+    background-color: #292929;
+}
+.socialdivs
+{
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.fb
+{
+    width: 200px;                   /*bo jest 5 kafelek na 1000px*/
+    height: 155px;
+    float: left;                    /*bo divy mają być obok siebie*/
+}
+.fb:hover
+{
+    background-color: #4668b3;      /*podświetlenie przy najechaniu na fejsbukowy kolor*/
+}
+.yt
+{
+    width: 200px;
+    height: 155px;
+    float: left;
+}
+.yt:hover
+{
+    background-color: #d94348;
+}
+.tw
+ {
+     width: 200px;
+     height: 155px;
+     float: left;
+ }
+.tw:hover
+{
+    background-color: #3095d3;
+}
+.gplus
+{
+    width: 200px;
+    height: 155px;
+    float: left;
+}
+.gplus:hover
+{
+    background-color: #3095d3;
+}
+.github
+{
+    width: 200px;
+    height: 155px;
+    float: left;
+}
+.github:hover
+{
+    background-color: black;
+}
+.footer
+{
+    text-align: center;
+    background-color: #222222;
+    padding: 30px;
+}
+.sticky                   /*klasa .sticky do przyklejania menu przy scrollowaniu*/
+{
+    width: 100%;
+    position: fixed;      /*pozcja przyklejona ma być stała (nieruchoma)*/
+    left: 0;              /*lewa krawędź ekranu*/
+    top: 0;               /*góra ekranu*  -  czyli początek układu współrzędnych*/
+    z-index: 100;         /*wymiar z - określa zasłanianie się elementów - duże z-index = coś jest bardziej na wierzchu, małe --> można coś schować*/
+    /*czyli, jeżeli java script uruchamia klasę .sticky, to pozycja menu jest zablokowana na początku układu wsp. jeżeli wyłącza to to nie działa*/
+    /*w nowym CSS jest już taka właściwość --> position: sticky;  -- warto obczaić. W 2019 powinno już śmigać na wszystkim*/
+}
+
+ol                          /*wygląd listy numerowanej w menu głównym*/
+{
+    padding: 0;              /*wyzerowanie wszystkich domyślnych paddingów i marginesów przeglądarki (ważne, bo potem nie wiadomo co się pierdoli)*/
+    margin: 0;
+    list-style-type: none;   /*czyścimy właściwości listy wynikające z html i przeglądarki (numerowanie)*/
+    font-size: 18px;
+    height: 35px;
+    line-height: 200%;      /*interlinia - ile miejsca w pionie zajmuje jedna linia tekstu*/
+    display: inline-block;   /*wyświetl elementy listy ol po środku  -  OBCZAI RÓŻNICĘ MIĘDZY float:left; i display: inline-block;*/
+}
+ol a                        /*stylizacja hiperłączy wewnątrz listy ol*/
+{
+    color: white;
+    text-decoration: none;   /*nie podkreślaj*/
+    display: block;          /*zachowuj się jak element blokowy - żeby można było przypisać wymiary*/
+}
+ol > li                      /*hierarchia: stylizujemy element li, którego rodzicem jest ol*/
+{
+    float: left;
+    width: 150px;
+    height: 40px;
+    border-right: 1px dashed #751b1b;
+}
+
+ol > li:first-child             /*sprytne dodanie lewej linii podziałowej tylko do pierwszego elementu listy*/
+{
+    border-left: 1px dashed #751b1b;
+}
+ol >li:hover
+{
+    background-color: #cf6969;
+}
+ol >li:hover > a                /*zmiana koloru czcionki przy najechaniu. Operatory hierarchii wynikają z html. obczaić, to logiczne*/
+{
+    color: #451717;
+}
+ol > li > ul                    /* każda lista rozwijana*/
+{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    height: 40px;
+    display: none;              /* trub wyświetlania podlisty - nie wyświetlaj (żeby się schowała)*/
+}
+ol > li:hover > ul              /* co się ma stać po najechaniu na element na liście rozwijanej.*/
+{
+    display: block;             /* pokazuj jako element blokowy - czyli pokazuj po prostu*/
+}
+ol > li > ul > li               /* element listy rozwijanej*/
+{
+    background-color: #cf6969;
+    position: relative;         /*ustaw w pozycji relatywnej do ul - ul jest w kodzie przed divem content, więc będzie na wierzchu po rozwinięciu*/
+    z-index: 100;               /* żeby mieć pewność, że zasłoni wszystko*/
+    border-top: 1px dashed #751b1b;
+}
+ol > li > ul > li:hover         /* podświetlanie elementu listy wewnętrznej*/
+{
+    background-color: #c34f4f;
+}
+ol > li > ul > li:hover >a      /*zmiana koloru czcionki linka*/
+{
+    color: #451717;
+}
